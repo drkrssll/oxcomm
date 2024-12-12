@@ -4,7 +4,6 @@ use std::error::Error;
 pub struct Translator {
     to: String,
     from: String,
-    client: reqwest::Client,
 }
 
 #[allow(unused)]
@@ -13,11 +12,12 @@ impl Translator {
         Self {
             to: to.to_string(),
             from: from.to_string(),
-            client: reqwest::Client::new(),
         }
     }
 
     pub async fn translate(&self, text: &str) -> Result<String, Box<dyn Error>> {
+        let client = reqwest::Client::new();
+
         let url = format!(
             "https://translate.google.com/translate_a/single?client=gtx&sl={}&tl={}&dt=t&q={}",
             self.from,
@@ -25,7 +25,7 @@ impl Translator {
             urlencoding::encode(&text)
         );
 
-        let response = self.client
+        let response = client
             .get(&url)
             .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
             .send()
