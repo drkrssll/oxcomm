@@ -6,7 +6,7 @@ edition = "2021"
 
 license = "MIT OR Apache-2.0"
 categories = ["text-processing", "api-bindings"]
-keywords = ["translate", "translation", "google translate", "text", "language"]
+keywords = ["translate", "translation", "google", "text", "language"]
 
 description = "A library for using Google Translate on the fly."
 repository = "https://github.com/drkrssll/oxcomm"
