@@ -9,15 +9,15 @@ pub struct Translator {
 
 #[allow(unused)]
 impl Translator {
-    pub fn new(to: String, from: String) -> Self {
+    pub fn new(to: &str, from: &str) -> Self {
         Self {
-            to,
-            from,
+            to: to.to_string(),
+            from: from.to_string(),
             client: reqwest::Client::new(),
         }
     }
 
-    pub async fn translate(&self, text: String) -> Result<String, Box<dyn Error>> {
+    pub async fn translate(&self, text: &str) -> Result<String, Box<dyn Error>> {
         let url = format!(
             "https://translate.google.com/translate_a/single?client=gtx&sl={}&tl={}&dt=t&q={}",
             self.from,
@@ -46,9 +46,9 @@ impl Translator {
 
 #[tokio::test]
 async fn test_translation() -> Result<(), Box<dyn Error>> {
-    let translator = Translator::new("en".to_string(), "auto".to_string());
+    let translator = Translator::new("en", "auto");
 
-    let translated_text = translator.translate("Hola".to_string()).await?;
+    let translated_text = translator.translate("Hola").await?;
 
     assert_eq!(translated_text, "Hello");
 
