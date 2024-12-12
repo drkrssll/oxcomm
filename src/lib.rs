@@ -1,7 +1,7 @@
 use std::error::Error;
 
 #[allow(unused)]
-struct Translator {
+pub struct Translator {
     to: String,
     from: String,
     client: reqwest::Client,
@@ -9,7 +9,7 @@ struct Translator {
 
 #[allow(unused)]
 impl Translator {
-    fn new(to: String, from: String) -> Self {
+    pub fn new(to: String, from: String) -> Self {
         Self {
             to,
             from,
@@ -17,7 +17,7 @@ impl Translator {
         }
     }
 
-    async fn translate(&self, text: String) -> Result<String, Box<dyn Error>> {
+    pub async fn translate(&self, text: String) -> Result<String, Box<dyn Error>> {
         let url = format!(
             "https://translate.google.com/translate_a/single?client=gtx&sl={}&tl={}&dt=t&q={}",
             self.from,

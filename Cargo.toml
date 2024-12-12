@@ -1,7 +1,16 @@
 [package]
 name = "oxcomm"
 version = "0.1.0"
+authors = ["Derek Russell russellderek01@gmail.com"]
 edition = "2021"
+
+license = "MIT OR Apache-2.0"
+categories = ["text-processing", "api-bindings"]
+keywords = ["translate", "translation", "google translate", "text", "language"]
+
+description = "A library for using Google Translate on the fly."
+repository = "https://github.com/drkrssll/oxcomm"
+homepage = "https://github.com/drkrssll/oxcomm"
 
 [dependencies]
 reqwest = { version = "0.12.9", features = ["blocking"] }
